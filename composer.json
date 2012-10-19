@@ -19,6 +19,11 @@
     	"mouf/html.utils.bootstrap": "2.1.*",
     	"mouf/html.widgets.menu": "2.*"
     },
+    "autoload": {
+        "psr-0": {
+            "Mouf": "src/"
+        }
+    },
     "mouf": {
     	"install": {
     		"install.php":"file"
