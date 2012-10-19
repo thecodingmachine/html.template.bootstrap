@@ -189,7 +189,6 @@ class BootstrapTemplate extends BaseTemplate  {
 	 */
 	public function setRightColumnSize($rightColumnSize) {
 		$this->rightColumnSize = $rightColumnSize;
-	}
-		
+	}	
 }
 ?>

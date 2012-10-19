@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><?php /* @var $this Mouf\Html\Template\BootstrapTemplate */?>
 <html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,7 +33,7 @@
 		$leftHtml = ob_get_clean();
 		
 		if ($leftHtml) {
-			$contentSize -= 2;
+			$contentSize -= $this->leftColumnSize;
 		}
 	}
 	if ($this->right != null) {
@@ -43,7 +43,7 @@
 		
 		
 		if ($rightHtml) {
-			$contentSize -= 2;
+			$contentSize -= $this->rightColumnSize;
 		}
 	}
 	?>
@@ -64,7 +64,7 @@
 		<div class="container">
 			<div class="row">
 			<?php if ($leftHtml != null) { ?>
-				<div id="sidebar-left" class="sidebar span2">
+				<div id="sidebar-left" class="sidebar span<?php echo $this->leftColumnSize ?>">
 					<?php echo $leftHtml;?>
 				</div>
 			<?php } ?>
@@ -78,7 +78,7 @@
 			</div>
 			
 			<?php if ($rightHtml != null) { ?>
-				<div id="sidebar-right" class="sidebar span2">
+				<div id="sidebar-right" class="sidebar span<?php echo $this->rightColumnSize ?>">
 						<?php echo $rightHtml;?>
 				</div>
 			<?php } ?>
