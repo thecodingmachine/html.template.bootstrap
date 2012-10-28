@@ -65,7 +65,9 @@
 			<div class="row">
 			<?php if ($leftHtml != null) { ?>
 				<div id="sidebar-left" class="sidebar span<?php echo $this->leftColumnSize ?>">
+					<?php if ($this->wrapLeftSideBarInWell) { echo '<div class="well">'; } ?>
 					<?php echo $leftHtml;?>
+					<?php if ($this->wrapLeftSideBarInWell) { echo '</div>'; } ?>
 				</div>
 			<?php } ?>
 				
@@ -79,7 +81,9 @@
 			
 			<?php if ($rightHtml != null) { ?>
 				<div id="sidebar-right" class="sidebar span<?php echo $this->rightColumnSize ?>">
-						<?php echo $rightHtml;?>
+					<?php if ($this->wrapRightSideBarInWell) { echo '<div class="well">'; } ?>
+					<?php echo $rightHtml;?>
+					<?php if ($this->wrapRightSideBarInWell) { echo '</div>'; } ?>
 				</div>
 			<?php } ?>
 			</div>

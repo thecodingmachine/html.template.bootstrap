@@ -39,7 +39,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * 
 	 * @var HtmlElementInterface
 	 */
-	public $header;
+	protected $header;
 	
 	/**
 	 * The footer of the template.
@@ -49,20 +49,13 @@ class BootstrapTemplate extends BaseTemplate  {
 	protected $footer;
 	
 	/**
-	 * The main menu
-	 * 
-	 * @var Menu
-	 */
-	protected $menu;
-	
-	/**
 	 * The number of blocks of the left column.
 	 * A bootstrap page is split in 12 blocks so this should be a number between 1 and 11.
 	 * If you are not using the left column, the size of the column is 0.
 	 * 
 	 * @var int
 	 */
-	protected $leftColumnSize;
+	protected $leftColumnSize = 2;
 	
 	/**
 	 * The number of blocks of the right column.
@@ -71,7 +64,21 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * 
 	 * @var int
 	 */
-	protected $rightColumnSize;
+	protected $rightColumnSize = 2;
+	
+	/**
+	 * Whether we should or not put the left sidebar in a Bootstrap "well" element.
+	 * 
+	 * @var bool
+	 */
+	protected $wrapLeftSideBarInWell = false;
+	
+	/**
+	 * Whether we should or not put the right sidebar in a Bootstrap "well" element.
+	 * 
+	 * @var bool
+	 */
+	protected $wrapRightSideBarInWell = false;
 	
 	/**
 	 * The URL of the favicon, relative to the ROOT_URL.
@@ -156,16 +163,6 @@ class BootstrapTemplate extends BaseTemplate  {
 	public function setFooter(HtmlElementInterface $footer) {
 		$this->footer = $footer;
 	}
-	
-	/**
-	 * The menu of the template, or null if your template has no menu
-	 * 
-	 * @Property
-	 * @param Menu $menu
-	 */
-	public function setMenu($menu) {
-		$this->menu = $menu;
-	}
 
 	/**
 	 * The number of blocks of the left column.
@@ -173,7 +170,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * If you are not using the left column, the size of the column is 0.
 	 *
 	 * @Property
-	 * @var int
+	 * @param int $leftColumnSize
 	 */
 	public function setLeftColumnSize($leftColumnSize) {
 		$this->leftColumnSize = $leftColumnSize;
@@ -185,10 +182,29 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * If you are not using the right column, the size of the column is 0.
 	 *
 	 * @Property
-	 * @var int
+	 * @param int $rightColumnSize
 	 */
 	public function setRightColumnSize($rightColumnSize) {
 		$this->rightColumnSize = $rightColumnSize;
-	}	
+	}
+	
+	/**
+	 * Whether we should or not put the left sidebar in a Bootstrap "well" element.
+	 * 
+	 * @param bool $wrapLeftSideBarInWell
+	 */
+	public function setWrapLeftSideBarInWell($wrapLeftSideBarInWell) {
+		$this->wrapLeftSideBarInWell = $wrapLeftSideBarInWell;
+	}
+
+	/**
+	 * Whether we should or not put the left sidebar in a Bootstrap "well" element.
+	 * 
+	 * @param bool $wrapRightSideBarInWell
+	 */
+	public function setWrapRightSideBarInWell($wrapRightSideBarInWell) {
+		$this->wrapRightSideBarInWell = $wrapRightSideBarInWell;
+	}
+	
 }
 ?>

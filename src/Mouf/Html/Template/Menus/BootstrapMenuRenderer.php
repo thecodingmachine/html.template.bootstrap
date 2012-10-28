@@ -6,6 +6,7 @@
  */
 namespace Mouf\Html\Template\Menus;
 
+use Mouf\Html\Widgets\Menu\MenuInterface;
 use \Mouf\Html\HtmlElement\HtmlElementInterface;
 use \Mouf\Html\Widgets\Menu\MenuItemInterface;
 
@@ -27,28 +28,27 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	public $menu;
 	
 	/**
-	 * The whole CSS class to apply to the UL element.
-	 * 
-	 * @Property
-	 * @Compulsory
-	 * @var string
+	 * If checked, the navbar will be pushed on the right side.
+	 *
+	 * @var boolean
 	 */
-	public $cssClass = "menu";
+	public $pullRight;
+	
 	
 	/**
 	 * Initialize the object, optionnally with the array of menu items to be displayed.
 	 *
-	 * @param array<MenuItemInterface> $menuItems
+	 * @param MenuInterface $menu
 	 */
 	public function __construct($menu = null) {
 		$this->menu = $menu;
 	}
 	
 	public function toHtml() {
-		if ($this->menu && !$this->menu->isHidden()) {
-			echo '<ul class="'.$this->cssClass.'">';
+		$menuItems = $this->menu->getChildren();
+		if ($this->menu && !$this->menu->isHidden() && !empty($menuItems)) {
+			echo '<ul class="nav '.($this->pullRight?' pull-right':'').'" role="menu" aria-labelledby="dLabel">';
 			
-			$menuItems = $this->menu->getChildren();
 			if (is_array($menuItems)) {
 				foreach ($menuItems as $item) {
 					$this->renderHtmlMenuItem($item);
@@ -59,35 +59,68 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 		}
 	}
 	
-	private function renderHtmlMenuItem(MenuItemInterface $menuItem) {
+	
+	private function renderHtmlMenuItem(MenuItemInterface $menuItem, $level = 0) {
 		if (!$menuItem->isHidden()) {
-			echo '<li ';
-			$menuCssClass = $menuItem->getCssClass();
-			if (!empty($menuCssClass) || $menuItem->isActive() || $menuItem->isExtended()) {
-				echo 'class="';
-				echo $menuCssClass;
-				if ($menuItem->isActive()) {
-					echo ' active';
-				}
-				echo '"';
+			
+			$menuItemStyleIcon = $menuItem->getAdditionalStyleByType('Mouf\\Html\\Widgets\\Menu\\MenuItemStyleIcon');
+			if($menuItemStyleIcon) {
+				$img = '<img src="'.$menuItemStyleIcon->getUrl().'" /> ';
+			} else {
+				$img = '';
 			}
-			echo '>';
-			$url = $menuItem->getLink();
-			if ($url) {
-				echo '<a href="'.$url.'" >';
-			}
-			echo $menuItem->getLabel();
-			if ($url) {
-				echo '</a>';
-			}
+			
+			
 			$children = $menuItem->getChildren();
+			echo '<li class="';
+			$menuCssClass = $menuItem->getCssClass();
+			echo $menuCssClass;
+			if ($menuItem->isActive()) {
+				echo ' active';
+			}
+
 			if ($children) {
-				echo '<ul>';
+				if ($level == 0) {
+					echo ' dropdown';
+				} else {
+					echo ' dropdown-submenu';
+				}
+			}
+			echo '">';
+			
+			
+			
+			
+			
+			// Note: restriction from bootstrap: a menu cannot be clickable and have children at the same time
+			if ($children) {
+				if ($level == 0) {
+					echo '<a class="dropdown-toggle"
+					data-toggle="dropdown"
+					href="#">
+					'.$img.$menuItem->getLabel().'
+					<b class="caret"></b>
+					</a>';
+				} else {
+					echo '<a href="#">
+					'.$img.$menuItem->getLabel().'
+					</a>';
+				}
+				echo '<ul class="dropdown-menu">';
 				foreach ($children as $child) {
 					/* @var $child MenuItemInterface */
-					$this->renderHtmlMenuItem($child);
+					$this->renderHtmlMenuItem($child, $level+1);
 				}
 				echo '</ul>';
+			} else {
+				$url = $menuItem->getLink();
+				if ($url) {
+					echo '<a href="'.$url.'" >';
+				}
+				echo $img.$menuItem->getLabel();
+				if ($url) {
+					echo '</a>';
+				}
 			}
 			
 			echo '</li>';
