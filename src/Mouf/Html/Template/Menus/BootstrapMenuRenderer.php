@@ -115,7 +115,7 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 			} else {
 				$url = $menuItem->getLink();
 				if ($url) {
-					echo '<a href="'.$url.'" >';
+					echo '<a href="'.htmlentities($url, ENT_QUOTES).'" >';
 				}
 				echo $img.$menuItem->getLabel();
 				if ($url) {
