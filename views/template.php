@@ -27,6 +27,7 @@
 	<?php
 	$contentSize = 12;
 	
+	$leftHtml = null;
 	if ($this->left != null) {
 		ob_start();
 		$this->left->toHtml();
@@ -36,6 +37,7 @@
 			$contentSize -= $this->leftColumnSize;
 		}
 	}
+	$rightHtml = null;	
 	if ($this->right != null) {
 		ob_start();
 		$this->right->toHtml();
