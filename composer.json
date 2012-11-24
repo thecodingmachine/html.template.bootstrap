@@ -3,7 +3,7 @@
     "description": "This package contains a Mouf template based on the Twitter Bootstrap HTML/CSS/JS library, along a Mouf installer file to add the template easily in your Mouf project.",
     "keywords": ["javascript", "mouf", "bootstrap", "template"],
     "homepage": "http://twitter.github.com/bootstrap/",
-    "type": "library",
+    "type": "mouf-library",
     "license": "MIT",
     "authors": [
         {
