@@ -51,6 +51,7 @@
 	?>
 	<body>
 		<div id="page">
+			<?php if ($this->logoUrl): ?>
 			<div id="header">
 				<div id="logo">
 					<a href="<?php echo ROOT_URL ?>">
@@ -58,6 +59,7 @@
 					</a>
 				</div>
 			</div>
+			<?php endif; ?>
 			<?php if ($this->header != null) { ?>
 				<?php $this->header->toHtml();?>
 			<?php } ?>
