@@ -26,7 +26,8 @@
     },
     "mouf": {
     	"install": {
-    		"install.php":"file"
+    		"type": "file",
+    		"file": "src/install.php"
     	}
     }
 }
