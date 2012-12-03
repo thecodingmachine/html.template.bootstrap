@@ -19,32 +19,32 @@ $footerBlock = InstallUtils::getOrCreateInstance("block.footer", "\\Mouf\\Html\\
 $template = InstallUtils::getOrCreateInstance("bootstrapTemplate", "\\Mouf\\Html\\Template\\BootstrapTemplate", $moufManager);
 
 $contentProperty = $template->getProperty("content");
-if ($contentProperty->getValue() != null) {
+if ($contentProperty->getValue() == null) {
 	$contentProperty->setValue($contentBlock);
 }
 
 $leftProperty = $template->getProperty("left");
-if ($leftProperty->getValue() != null) {
+if ($leftProperty->getValue() == null) {
 	$leftProperty->setValue($leftBlock);
 }
 
 $rightProperty = $template->getProperty("right");
-if ($rightProperty->getValue() != null) {
+if ($rightProperty->getValue() == null) {
 	$rightProperty->setValue($rightBlock);
 }
 
 $headerProperty = $template->getProperty("header");
-if ($headerProperty->getValue() != null) {
+if ($headerProperty->getValue() == null) {
 	$headerProperty->setValue($headerBlock);
 }
 
 $footerProperty = $template->getProperty("footer");
-if ($footerProperty->getValue() != null) {
+if ($footerProperty->getValue() == null) {
 	$footerProperty->setValue($footerBlock);
 }
 
 $webLibraryManager = $moufManager->getInstanceDescriptor('defaultWebLibraryManager');
-if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue() != null) {
+if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue() == null) {
 	$template->getProperty('webLibraryManager')->setValue($webLibraryManager);
 }
 
