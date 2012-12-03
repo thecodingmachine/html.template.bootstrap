@@ -24,10 +24,14 @@
             "Mouf": "src/"
         }
     },
-    "mouf": {
-    	"install": {
-    		"type": "file",
-    		"file": "src/install.php"
+    "extra": {
+    	"mouf": {
+	    	"install": [
+	    		{
+	    			"type": "file",
+	    			"file": "src/install.php"
+	    		}
+	    	]
     	}
     }
 }
