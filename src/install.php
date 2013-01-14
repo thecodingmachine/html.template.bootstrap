@@ -10,13 +10,13 @@ InstallUtils::init(InstallUtils::$INIT_APP);
 // Let's create the instance
 $moufManager = MoufManager::getMoufManager();
 
-$contentBlock = InstallUtils::getOrCreateInstance("block.content", "\\Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-$leftBlock = InstallUtils::getOrCreateInstance("block.left", "\\Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-$rightBlock = InstallUtils::getOrCreateInstance("block.right", "\\Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-$headerBlock = InstallUtils::getOrCreateInstance("block.header", "\\Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-$footerBlock = InstallUtils::getOrCreateInstance("block.footer", "\\Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+$contentBlock = InstallUtils::getOrCreateInstance("block.content", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+$leftBlock = InstallUtils::getOrCreateInstance("block.left", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+$rightBlock = InstallUtils::getOrCreateInstance("block.right", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+$headerBlock = InstallUtils::getOrCreateInstance("block.header", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+$footerBlock = InstallUtils::getOrCreateInstance("block.footer", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
 
-$template = InstallUtils::getOrCreateInstance("bootstrapTemplate", "\\Mouf\\Html\\Template\\BootstrapTemplate", $moufManager);
+$template = InstallUtils::getOrCreateInstance("bootstrapTemplate", "Mouf\\Html\\Template\\BootstrapTemplate", $moufManager);
 
 $contentProperty = $template->getProperty("content");
 if ($contentProperty->getValue() == null) {
