@@ -111,7 +111,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->favIconUrl = self::TEMPLATE_ROOT_URL."images/favicon.png";
+		//$this->favIconUrl = self::TEMPLATE_ROOT_URL."images/favicon.png";
 		//$this->logoUrl = self::TEMPLATE_ROOT_URL."images/logo.png";
 	}
 
