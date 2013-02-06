@@ -36,6 +36,15 @@ class BootstrapNavBar implements HtmlElementInterface {
 	public $title;
 	
 	/**
+	 * The link the navbar title points to, relative to the ROOT_URL.
+	 * Defaults to "".
+	 *
+	 * @Property
+	 * @var string
+	 */
+	public $titleLink = "";
+	
+	/**
 	 * If checked, the navbar will be rendered in dark shades instead of bright shades.
 	 * 
 	 * @var boolean
@@ -57,7 +66,7 @@ class BootstrapNavBar implements HtmlElementInterface {
 		echo '<div class="container">';
 		
 		if ($this->title) {
-			echo '<a class="brand" href="'.ROOT_URL.'">'.$this->title.'</a>';
+			echo '<a class="brand" href="'.ROOT_URL.$this->titleLink.'">'.$this->title.'</a>';
 		}
 		
 		foreach ($this->children as $child) {
