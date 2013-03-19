@@ -31,7 +31,8 @@
 	    			"type": "file",
 	    			"file": "src/install.php"
 	    		}
-	    	]
+	    	],
+	    	"logo": "icons/logo.png"
     	}
     }
 }
