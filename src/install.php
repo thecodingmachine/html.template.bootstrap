@@ -48,6 +48,13 @@ if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue(
 	$template->getProperty('webLibraryManager')->setValue($webLibraryManager);
 }
 
+
+$bootstrapMessageRenderer = InstallUtils::getOrCreateInstance("bootstrapMessageRenderer", "Mouf\\Html\\Template\\Messages\\BootstrapMessageRenderer", $moufManager);
+if ($moufManager->instanceExists("messageWidget")) {
+	$messageWidget = $moufManager->getInstanceDescriptor("messageWidget");
+	$messageWidget->getProperty("messageRenderer")->setValue($bootstrapMessageRenderer);
+}
+
 // Let's rewrite the MoufComponents.php file to save the component
 $moufManager->rewriteMouf();
 
