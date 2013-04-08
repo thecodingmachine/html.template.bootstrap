@@ -65,8 +65,8 @@
 			<?php } ?>
 		</div>
 		
-		<div class="container">
-			<div class="row">
+		<div class="container<?php echo ($this->enableFluidLayout?"-fluid":""); ?>">
+			<div class="row<?php echo ($this->enableFluidLayout?"-fluid":""); ?>">
 			<?php if ($leftHtml != null) { ?>
 				<div id="sidebar-left" class="sidebar span<?php echo $this->leftColumnSize ?>">
 					<?php if ($this->wrapLeftSideBarInWell) { echo '<div class="well">'; } ?>
