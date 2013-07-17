@@ -52,6 +52,13 @@ class BootstrapNavBar implements HtmlElementInterface {
 	public $inverted;
 	
 	/**
+	 * If checked, the navbar will be fixed at the top.
+	 *
+	 * @var boolean
+	 */
+	public $fixed;
+	
+	/**
 	 * Initialize the object, optionnally with the array of menu items to be displayed.
 	 *
 	 * @param array<HtmlElementInterface> $children
@@ -61,7 +68,7 @@ class BootstrapNavBar implements HtmlElementInterface {
 	}
 	
 	public function toHtml() {
-		echo '<div class="navbar'.($this->inverted?' navbar-inverse':'').'">';
+		echo '<div class="navbar'.($this->inverted?' navbar-inverse':'').($this->fixed?' navbar-fixed-top':'').'">';
 		echo '<div class="navbar-inner">';
 		echo '<div class="container">';
 		
