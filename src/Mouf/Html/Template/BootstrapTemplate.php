@@ -127,8 +127,10 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * Draws the template.
 	 */
 	public function toHtml(){
+		// Let's register the template renderer in the default renderer.
+		$this->getDefaultRenderer()->setTemplateRenderer($this->getTemplateRenderer());
+		
 		header('Content-Type: text/html; charset=utf-8');
-
 		include __DIR__."/../../../../views/template.php";
 	}
 	

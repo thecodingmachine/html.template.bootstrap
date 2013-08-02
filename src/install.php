@@ -3,6 +3,7 @@ require_once __DIR__."/../../../autoload.php";
 
 use Mouf\Actions\InstallUtils;
 use Mouf\MoufManager;
+use Mouf\Html\Renderer\ChainableRendererInterface;
 
 // Let's init Mouf
 InstallUtils::init(InstallUtils::$INIT_APP);
@@ -48,12 +49,13 @@ if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue(
 	$template->getProperty('webLibraryManager')->setValue($webLibraryManager);
 }
 
-
-$bootstrapMessageRenderer = InstallUtils::getOrCreateInstance("bootstrapMessageRenderer", "Mouf\\Html\\Template\\Messages\\BootstrapMessageRenderer", $moufManager);
-if ($moufManager->instanceExists("messageWidget")) {
-	$messageWidget = $moufManager->getInstanceDescriptor("messageWidget");
-	$messageWidget->getProperty("messageRenderer")->setValue($bootstrapMessageRenderer);
-}
+$bootstrapRenderer = InstallUtils::getOrCreateInstance("bootstrapRenderer", "Mouf\\Html\\Renderer\\FileBasedRenderer", $moufManager);
+$bootstrapRenderer->getProperty("directory")->setValue("vendor/mouf/html.template.bootstrap/src/templates");
+$bootstrapRenderer->getProperty("cacheService")->setValue($moufManager->getInstanceDescriptor("rendererCacheService"));
+$bootstrapRenderer->getProperty("type")->setValue(ChainableRendererInterface::TYPE_TEMPLATE);
+$bootstrapRenderer->getProperty("priority")->setValue(0);
+$template->getProperty("templateRenderer")->setValue($bootstrapRenderer);
+$template->getProperty("defaultRenderer")->setValue($moufManager->getInstanceDescriptor("defaultRenderer"));
 
 // Let's rewrite the MoufComponents.php file to save the component
 $moufManager->rewriteMouf();
