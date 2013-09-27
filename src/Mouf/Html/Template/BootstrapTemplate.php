@@ -6,6 +6,8 @@
  */
 namespace Mouf\Html\Template;
 
+use Mouf\Html\Renderer\Renderable;
+
 use Mouf\Html\Template\BaseTemplate\BaseTemplate;
 use Mouf\Html\HtmlElement\HtmlElementInterface;
 
@@ -16,6 +18,7 @@ use Mouf\Html\HtmlElement\HtmlElementInterface;
  * @Component
  */
 class BootstrapTemplate extends BaseTemplate  {
+	use Renderable;
 
 	const TEMPLATE_ROOT_URL = "vendor/mouf/html.template.bootstrap/"; 
 
@@ -123,7 +126,7 @@ class BootstrapTemplate extends BaseTemplate  {
 		$this->getDefaultRenderer()->setTemplateRenderer($this->getTemplateRenderer());
 		
 		header('Content-Type: text/html; charset=utf-8');
-		include __DIR__."/../../../../views/template.php";
+		Renderable::toHtml();// __DIR__."/../../../../views/template.php";
 	}
 	
 	/**
@@ -167,6 +170,41 @@ class BootstrapTemplate extends BaseTemplate  {
 	}
 
 	/**
+	 * The content of the template.
+	 */
+	public function getContent() {
+		return $this->content;
+	}
+	
+	/**
+	 * The left menu of the template.
+	 */
+	public function getLeft() {
+		return $this->left;
+	}
+	
+	/**
+	 * The right menu of the template.
+	 */
+	public function getRight() {
+		return $this->right;
+	}
+	
+	/**
+	 * The header of the template.
+	 */
+	public function getHeader() {
+		return $this->header;
+	}
+	
+	/**
+	 * The footer of the template.
+	 */
+	public function getFooter() {
+		return $this->footer;
+	}
+	
+	/**
 	 * The number of blocks of the left column.
 	 * A bootstrap page is split in 12 blocks so this should be a number between 1 and 11.
 	 * If you are not using the left column, the size of the column is 0.
@@ -191,6 +229,27 @@ class BootstrapTemplate extends BaseTemplate  {
 	}
 	
 	/**
+	 * The number of blocks of the left column.
+	 * A bootstrap page is split in 12 blocks so this should be a number between 1 and 11.
+	 * If you are not using the left column, the size of the column is 0.
+	 *
+	 */
+	public function getLeftColumnSize() {
+		return $this->leftColumnSize;
+	}
+	
+	/**
+	 * The number of blocks of the right column.
+	 * A bootstrap page is split in 12 blocks so this should be a number between 1 and 11.
+	 * If you are not using the right column, the size of the column is 0.
+	 *
+	 */
+	public function getRightColumnSize() {
+		return $this->rightColumnSize;
+	}
+	
+	
+	/**
 	 * Whether we should or not put the left sidebar in a Bootstrap "well" element.
 	 * 
 	 * @param bool $wrapLeftSideBarInWell
@@ -206,6 +265,22 @@ class BootstrapTemplate extends BaseTemplate  {
 	 */
 	public function setWrapRightSideBarInWell($wrapRightSideBarInWell) {
 		$this->wrapRightSideBarInWell = $wrapRightSideBarInWell;
+	}
+
+
+	/**
+	 * Whether we should or not put the left sidebar in a Bootstrap "well" element.
+	 *
+	 */
+	public function getWrapLeftSideBarInWell() {
+		return $this->wrapLeftSideBarInWell;
+	}
+	
+	/**
+	 * Whether we should or not put the left sidebar in a Bootstrap "well" element.
+	 */
+	public function getWrapRightSideBarInWell() {
+		return $this->wrapRightSideBarInWell;
 	}
 	
 }

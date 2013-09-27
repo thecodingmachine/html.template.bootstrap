@@ -52,13 +52,6 @@ class BootstrapNavBar implements HtmlElementInterface {
 	public $inverted;
 	
 	/**
-	 * If checked, the navbar will be fixed at the top.
-	 *
-	 * @var boolean
-	 */
-	public $fixed;
-	
-	/**
 	 * Display the menu with the maximum width<br />
 	 * If the parameter fixed is set, this is not used
 	 * 
