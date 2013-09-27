@@ -107,14 +107,6 @@ class BootstrapTemplate extends BaseTemplate  {
 	public $enableResponsiveDesign;
 	
 	/**
-	 * Whether Bootstrap fluid layout should be enabled or disabled.
-	 * 
-	 * @Property
-	 * @var boolean
-	 */
-	public $enableFluidLayout = false;
-	
-	/**
 	 * Default constructor
 	 */
 	public function __construct() {

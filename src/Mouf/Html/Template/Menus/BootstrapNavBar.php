@@ -59,6 +59,24 @@ class BootstrapNavBar implements HtmlElementInterface {
 	public $fixed;
 	
 	/**
+	 * Display the menu with the maximum width<br />
+	 * If the parameter fixed is set, this is not used
+	 * 
+	 * @var boolean
+	 */
+	public $allWidth;
+	
+	/**
+	 * Fixed the navigation bar to the <b>top</b> or <b>bottom</b>. Please insert top or bottom.<br />
+	 * <strong class="text-error">Caution :</strong><br />
+	 * For <b>top</b> you must be add "body { padding-top: 70px; }" in your css<br />
+	 * For <b>bottom</b> you must be add "body { padding-bottom: 70px; }" in your css
+	 * 
+	 * @var string
+	 */
+	public $fixed;
+	
+	/**
 	 * Initialize the object, optionnally with the array of menu items to be displayed.
 	 *
 	 * @param array<HtmlElementInterface> $children
@@ -68,14 +86,26 @@ class BootstrapNavBar implements HtmlElementInterface {
 	}
 	
 	public function toHtml() {
-		echo '<div class="navbar'.($this->inverted?' navbar-inverse':'').($this->fixed?' navbar-fixed-top':'').'">';
-		echo '<div class="navbar-inner">';
-		echo '<div class="container">';
-		
-		if ($this->title) {
-			echo '<a class="brand" href="'.ROOT_URL.$this->titleLink.'">'.$this->title.'</a>';
+		if(!$this->allWidth) {
+			echo '<div class="container">';
 		}
-		
+		echo '<div class="navbar '.($this->allWidth?' navbar-static-top':'').($this->fixed?' navbar-fixed-'.$this->fixed:'').($this->inverted?' navbar-inverse':' navbar-default').'" role="navigation">';
+		if($this->allWidth) {
+			echo '<div class="container">';
+		}
+		echo '<div class="navbar-header">';
+		echo '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">';
+		echo '<span class="sr-only">Toggle navigation</span>';
+		echo '<span class="icon-bar"></span>';
+		echo '<span class="icon-bar"></span>';
+		echo '<span class="icon-bar"></span>';
+		echo '</button>';
+
+		if ($this->title) {
+			echo '<a class="navbar-brand" href="'.ROOT_URL.$this->titleLink.'">'.$this->title.'</a>';
+		}
+		echo '</div>';
+		echo '<div class="collapse navbar-collapse navbar-ex1-collapse">';
 		foreach ($this->children as $child) {
 			$child->toHtml();
 		}

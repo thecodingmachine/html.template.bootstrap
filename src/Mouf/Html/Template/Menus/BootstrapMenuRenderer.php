@@ -34,27 +34,6 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	 */
 	public $pullRight;
 	
-	/**
-	 * If checked, the navbar will be rendered as tabs
-	 *
-	 * @var boolean
-	 */
-	public $tabs;
-	
-	/**
-	 * If checked, the navbar will be rendered as pills
-	 *
-	 * @var boolean
-	 */
-	public $pills;
-	
-	/**
-	 * If checked, the navbar will be rendered vertically
-	 *
-	 * @var boolean
-	 */
-	public $stacked;
-	
 	
 	/**
 	 * Initialize the object, optionnally with the array of menu items to be displayed.
@@ -68,11 +47,8 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	public function toHtml() {
 		$menuItems = $this->menu->getChildren();
 		if ($this->menu && !$this->menu->isHidden() && !empty($menuItems)) {
-			echo '<ul class="nav '.($this->pullRight?' pull-right':'')
-				.($this->tabs?' nav-tabs':'')
-				.($this->pills?' nav-pills':'')
-				.($this->stacked?' nav-stacked':'').
-				'" role="menu" aria-labelledby="dLabel">';
+			echo '<ul class="nav navbar-nav'.($this->pullRight?' navbar-right':'')
+				.'" role="menu" aria-labelledby="dLabel">';
 			
 			if (is_array($menuItems)) {
 				foreach ($menuItems as $item) {
@@ -108,7 +84,7 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 				if ($level == 0) {
 					echo ' dropdown';
 				} else {
-					echo ' dropdown-submenu';
+					echo ' dropdown';
 				}
 			}
 			echo '">';

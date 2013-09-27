@@ -18,11 +18,8 @@
 		$webLibraryManager = $this->getWebLibraryManager();
 		if ($webLibraryManager) {
 			$this->getWebLibraryManager()->toHtml();
-		} 
-		if ($this->enableResponsiveDesign) {
+		}
 		?>
-		<link href="<?php echo ROOT_URL ?>vendor/mouf/html.utils.bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-		<?php } ?>
 	</head>
 	<?php
 	$contentSize = 12;
@@ -48,10 +45,16 @@
 			$contentSize -= $this->rightColumnSize;
 		}
 	}
+	
+	$footerHtml = null;	
+	if ($this->footer != null) {
+		ob_start();
+		$this->footer->toHtml();
+		$footerHtml = ob_get_clean();
+	}
 	?>
 	<body>
-		<div id="page">
-			<?php if ($this->logoUrl): ?>
+		<?php if ($this->logoUrl): ?>
 			<div id="header">
 				<div id="logo">
 					<a href="<?php echo ROOT_URL ?>">
@@ -59,40 +62,41 @@
 					</a>
 				</div>
 			</div>
-			<?php endif; ?>
-			<?php if ($this->header != null) { ?>
-				<?php $this->header->toHtml();?>
-			<?php } ?>
-		</div>
-		
-		<div class="container<?php echo ($this->enableFluidLayout?"-fluid":""); ?>">
-			<div class="row<?php echo ($this->enableFluidLayout?"-fluid":""); ?>">
-			<?php if ($leftHtml != null) { ?>
-				<div id="sidebar-left" class="sidebar span<?php echo $this->leftColumnSize ?>">
-					<?php if ($this->wrapLeftSideBarInWell) { echo '<div class="well">'; } ?>
-					<?php echo $leftHtml;?>
-					<?php if ($this->wrapLeftSideBarInWell) { echo '</div>'; } ?>
+		<?php endif; ?>
+		<?php if ($this->header != null) { ?>
+			<?php $this->header->toHtml();?>
+		<?php } ?>
+		<div class="container">
+			<div class="row">
+				<?php if ($leftHtml != null) { ?>
+					<div id="sidebar-left" class="sidebar col-md-<?php echo $this->leftColumnSize ?>">
+						<?php if ($this->wrapLeftSideBarInWell) { echo '<div class="well">'; } ?>
+						<?php echo $leftHtml;?>
+						<?php if ($this->wrapLeftSideBarInWell) { echo '</div>'; } ?>
+					</div>
+				<?php } ?>
+				<div id="content" class="col-md-<?php echo $contentSize; ?>">
+					<?php 
+					if ($this->content != null) {
+						$this->content->toHtml();
+					}
+					?>
 				</div>
-			<?php } ?>
-				
-			<div id="content" class="span<?php echo $contentSize; ?>">
-				<?php 
-				if ($this->content != null) {
-					$this->content->toHtml();
-				}
-				?>
+				<?php if ($rightHtml != null) { ?>
+					<div id="sidebar-right" class="sidebar col-md-<?php echo $this->rightColumnSize ?>">
+						<?php if ($this->wrapRightSideBarInWell) { echo '<div class="well">'; } ?>
+						<?php echo $rightHtml;?>
+						<?php if ($this->wrapRightSideBarInWell) { echo '</div>'; } ?>
+					</div>
+				<?php } ?>
 			</div>
-			
-			<?php if ($rightHtml != null) { ?>
-				<div id="sidebar-right" class="sidebar span<?php echo $this->rightColumnSize ?>">
-					<?php if ($this->wrapRightSideBarInWell) { echo '<div class="well">'; } ?>
-					<?php echo $rightHtml;?>
-					<?php if ($this->wrapRightSideBarInWell) { echo '</div>'; } ?>
-				</div>
-			<?php } ?>
+			<div class="row">
+				<?php if ($footerHtml != null) { ?>
+					<div id="footer" class="col-md-<?php echo $contentSize ?>">
+						<?php echo $footerHtml;?>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
-			<div style="height: 10px;"></div>
-		
 	</body>
 </html>
