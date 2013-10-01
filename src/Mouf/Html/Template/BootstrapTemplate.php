@@ -18,7 +18,10 @@ use Mouf\Html\HtmlElement\HtmlElementInterface;
  * @Component
  */
 class BootstrapTemplate extends BaseTemplate  {
-	use Renderable;
+	//use Renderable;
+	use Renderable {
+		Renderable::toHtml as toHtmlRenderer;
+	}
 
 	const TEMPLATE_ROOT_URL = "vendor/mouf/html.template.bootstrap/"; 
 
@@ -126,7 +129,8 @@ class BootstrapTemplate extends BaseTemplate  {
 		$this->getDefaultRenderer()->setTemplateRenderer($this->getTemplateRenderer());
 		
 		header('Content-Type: text/html; charset=utf-8');
-		Renderable::toHtml();// __DIR__."/../../../../views/template.php";
+		//Renderable::toHtml();// __DIR__."/../../../../views/template.php";
+		$this->toHtmlRenderer();
 	}
 	
 	/**
