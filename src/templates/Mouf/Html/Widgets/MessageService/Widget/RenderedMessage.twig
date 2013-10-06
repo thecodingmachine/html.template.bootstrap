@@ -1,4 +1,10 @@
-<div class='alert alert-{{ this.userMessage.type|e('html_attr') }}'>
+{%  if this.userMessage.type == "error" %}
+	{% set messageType = "danger" %}
+{% else %}
+	{% set messageType = this.userMessage.type|e('html_attr') %}
+{% endif %}
+
+<div class='alert alert-{{ messageType }}'>
 {{ this.userMessage.message|raw }}
 {% if this.nbMessages > 1 %}
  (message repeated {{ this.nbMessages }} times)

@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		{% if favIconUrl %}
-			<link rel="icon" type="image/png" href="{{ constant(ROOT_URL) ~ favIconUrl }}" />
+			<link rel="icon" type="image/png" href="{{ constant('ROOT_URL') ~ favIconUrl }}" />
 		{% endif %}
 		<title>{{ this.title }}</title>
 		{% if this.webLibraryManager %}
@@ -33,8 +33,8 @@
 		{% if this.logoUrl %}
 			<div id="header">
 				<div id="logo">
-					<a href="{{ constant(ROOT_URL) }}">
-						<img src="{{ constant(ROOT_URL) ~ this.logoUrl }}>" alt="" />
+					<a href="{{ constant('ROOT_URL') }}">
+						<img src="{{ constant('ROOT_URL') ~ this.logoUrl }}>" alt="" />
 					</a>
 				</div>
 			</div>
