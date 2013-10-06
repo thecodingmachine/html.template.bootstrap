@@ -22,7 +22,6 @@ class BootstrapNavBar implements HtmlElementInterface {
 	/**
 	 * The elements of the navbar
 	 *
-	 * @Important
 	 * @var array<HtmlElementInterface>
 	 */
 	public $children = array();
@@ -72,6 +71,7 @@ class BootstrapNavBar implements HtmlElementInterface {
 	/**
 	 * Initialize the object, optionnally with the array of menu items to be displayed.
 	 *
+	 * @Important
 	 * @param array<HtmlElementInterface> $children
 	 */
 	public function __construct($children = array()) {
