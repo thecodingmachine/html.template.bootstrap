@@ -1,7 +1,7 @@
 {% if not this.hidden %}
 {% set menuCssClass = cssClass ~ (active?" active":"") ~ (children?" dropdown":"") %}
 <li{% if menuCssClass %} class="{{ menuCssClass }}"{% endif %}>
-{%- if url %}<a href="{{ url }}" {% if children %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>{{ label }} {% if children %}<b class="caret"></b>{% endif %}</a>{% else %}{{ label }}{% endif -%}
+{%- if url or children  %}<a href="{{ this.link ? this.link : '#' }}" {% if children %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>{{ label }} {% if children %}<b class="caret"></b>{% endif %}</a>{% else %}{{ label }}{% endif -%}
 {% if children %}
 <ul class="dropdown-menu">
 	{%- for child in children -%}
