@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group <?php echo $object->getName() ?>">
 	<?php
 	/* @var $object Mouf\Html\Widgets\Form\RadiosField */
 

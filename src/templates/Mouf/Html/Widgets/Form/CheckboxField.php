@@ -1,5 +1,5 @@
 
-<div class="form-group">
+<div class="form-group <?php echo $object->getInput()->getName() ?>">
     <?php
 	    /* @var $object Mouf\Html\Widgets\Form\TextField */
 	    $object->getLabel()->addClass('col-lg-4');

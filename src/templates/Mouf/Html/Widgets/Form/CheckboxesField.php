@@ -1,7 +1,6 @@
-<div class="form-group">
+<?php /* @var $object Mouf\Html\Widgets\Form\CheckboxesField */ ?>
+<div class="form-group <?php echo $object->getName()?>">
 	<?php
-	/* @var $object Mouf\Html\Widgets\Form\CheckboxesField */
-
 	$object->getLabel()->addClass('col-lg-4');
 	$object->getLabel()->addClass('control-label');
 	if($object->isRequired()) {

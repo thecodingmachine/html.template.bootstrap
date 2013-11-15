@@ -1,7 +1,7 @@
 <?php
 /* @var $object Mouf\Html\Widgets\Form\FileUploaderField */
 ?>
-<div class="form-group">
+<div class="form-group <?php echo $object->getFileUploader()->inputName ?>">
     <?php
 	    $object->getLabel()->addClass('col-lg-4');
 	    $object->getLabel()->addClass('control-label');
