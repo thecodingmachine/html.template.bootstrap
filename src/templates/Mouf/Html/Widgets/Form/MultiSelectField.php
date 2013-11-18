@@ -15,14 +15,23 @@ use Mouf\Html\Tags\Select;
     ?>
     <div class="col-lg-8">
     	<?php
+    		$first = true;
 	    	foreach ($object->getSelects() as $select){
 	    		/* @var $select Select */
 	    		$select->addClass('form-control');
 	    		$select->toHtml();
-	    		$removeElem = $object->getRemoveElement();
-	    		$removeElem->addDataAttribute('target', $select->getDataAttributes()['id']);
-	    		$removeElem->addClass("mouf-remove-dd-item")->addClass('glyphicon glyphicon-remove');
-	    		$removeElem->toHtml();
+	    		if ($first){
+	    			$first = false;
+	    			if ($object->isRequired()){
+	    				$showRemove = false;
+	    			}
+	    		}
+	    		if ($showRemove){
+		    		$removeElem = $object->getRemoveElement();
+		    		$removeElem->addDataAttribute('target', $select->getDataAttributes()['id']);
+		    		$removeElem->addClass("mouf-remove-dd-item")->addClass('glyphicon glyphicon-remove');
+		    		$removeElem->toHtml();
+	    		}
 	    	}
     	
     		if($object->getHelpText()) {
