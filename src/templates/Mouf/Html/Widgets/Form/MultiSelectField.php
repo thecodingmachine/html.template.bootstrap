@@ -20,6 +20,7 @@ use Mouf\Html\Tags\Select;
 	    		/* @var $select Select */
 	    		$select->addClass('form-control');
 	    		$select->toHtml();
+	    		$showRemove = true;
 	    		if ($first){
 	    			$first = false;
 	    			if ($object->isRequired()){
