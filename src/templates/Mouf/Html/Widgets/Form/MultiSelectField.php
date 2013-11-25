@@ -62,12 +62,16 @@ use Mouf\Html\Tags\Select;
 	</div>
 	<script type="text/javascript">
 	<!--
+	$(document).off('click', '.mouf-remove-dd-item');
 	$(document).on('click', '.mouf-remove-dd-item', function(){
 		var target = $('select[data-id='+$(this).attr('data-target')+']');
 		target.remove();
 		$(this).remove();
 	});
-	$('.mouf-add-dd-item').click(function(){
+
+	var $addButton = $('.mouf-add-dd-item');
+	$addButton.unbind('click');
+	$addButton.click(function(){
 		var index = parseInt($(this).data('next'));
 		var selector = $(this).attr('data-target');
 		var template = $('#'+selector);
