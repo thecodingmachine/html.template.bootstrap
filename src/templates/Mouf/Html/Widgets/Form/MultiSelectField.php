@@ -18,7 +18,7 @@ use Mouf\Html\Tags\Select;
     		$first = true;
 	    	foreach ($object->getSelects() as $select){
 	    		/* @var $select Select */
-	    		$select->addClass('form-control');
+	    		$select->addClass('form-control mouf-multiple-select-list');
 	    		$select->toHtml();
 	    		$showRemove = true;
 	    		if ($first){
@@ -44,7 +44,7 @@ use Mouf\Html\Tags\Select;
 			?>
 			<pre style="display: none" id="<?php echo $object->getSelectTemplate()->getDataAttributes()['id']?>">
 			<?php
-			$object->getSelectTemplate()->addClass('form-control');
+			$object->getSelectTemplate()->addClass('form-control mouf-multiple-select-list');
 			$object->getSelectTemplate()->toHtml();
 			$removeElem = $object->getRemoveElement();
 			$removeElem->addDataAttribute('target', $object->getSelectTemplate()->getDataAttributes()['id']);
