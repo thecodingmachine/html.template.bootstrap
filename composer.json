@@ -15,16 +15,14 @@
 		"template"
 	],
 	"homepage" : "http://twitter.github.com/bootstrap/",
-	"license" : [
-		"MIT"
-	],
+	"license" : "MIT",
 	"require" : {
 		"mouf/html.utils.weblibrarymanager" : "~2.0",
 		"mouf/html.widgets.messageservice" : "~3.0",
 		"php" : ">=5.3.0",
 		"mouf/html.widgets.menu" : "~3.0",
 		"mouf/html.template.templateinterface" : "~2.1",
-		"mouf/html.utils.bootstrap" : "3.0.*"
+		"mouf/html.utils.bootstrap" : "3.1.*"
 	},
 	"autoload" : {
 		"psr-0" : {
