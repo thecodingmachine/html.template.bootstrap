@@ -1,10 +1,10 @@
 {% if not this.hidden %}
-{% set menuCssClass = cssClass ~ (active?" active":"") ~ (children?" dropdown":"") %}
+{% set menuCssClass = this.cssClass ~ (this.active?" active":"") ~ (this.children?" dropdown":"") %}
 <li{% if menuCssClass %} class="{{ menuCssClass }}"{% endif %}>
-{%- if url or children  %}<a href="{{ this.link ? this.link : '#' }}" {% if children %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>{{ label }} {% if children %}<b class="caret"></b>{% endif %}</a>{% else %}{{ label }}{% endif -%}
-{% if children %}
+{%- if this.url or this.children  %}<a href="{{ this.link ? this.link : '#' }}" {% if this.children %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>{{ this.label }} {% if children %}<b class="caret"></b>{% endif %}</a>{% else %}{{ this.label }}{% endif -%}
+{% if this.children %}
 <ul class="dropdown-menu">
-	{%- for child in children -%}
+	{%- for child in this.children -%}
 		{{- toHtml(child) -}}
 	{%- endfor -%}
 </ul>
