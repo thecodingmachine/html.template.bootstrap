@@ -41,7 +41,7 @@
 		{% endif %}
 		{{ toHtml(this.header) }}
 
-		<div class="container">
+		<div class="{{ containerClass }}">
 			<div class="row">
 				{% if leftHtml %}
 					<div id="sidebar-left" class="sidebar col-md-{{ this.leftColumnSize }}">

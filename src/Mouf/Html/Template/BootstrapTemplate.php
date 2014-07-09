@@ -113,6 +113,12 @@ class BootstrapTemplate extends BaseTemplate  {
 	public $enableResponsiveDesign;
 	
 	/**
+	 * The css class applied to the container div.
+	 * @var string
+	 */
+	protected $containerClass = "container";
+	
+	/**
 	 * Default constructor
 	 */
 	public function __construct() {
@@ -285,6 +291,14 @@ class BootstrapTemplate extends BaseTemplate  {
 	 */
 	public function getWrapRightSideBarInWell() {
 		return $this->wrapRightSideBarInWell;
+	}
+	
+	/**
+	 * The css class applied to the container div.
+	 * @param string $containerClass
+	 */
+	public function setContainerClass($containerClass) {
+		$this->containerClass = $containerClass;
 	}
 	
 }
