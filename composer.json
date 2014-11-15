@@ -22,7 +22,7 @@
 		"php" : ">=5.3.0",
 		"mouf/html.widgets.menu" : "~3.0",
 		"mouf/html.template.templateinterface" : "~2.1",
-		"mouf/html.utils.bootstrap" : "3.2.*"
+		"mouf/html.utils.bootstrap" : "3.3.*"
 	},
 	"autoload" : {
 		"psr-0" : {
