@@ -8,14 +8,14 @@ Bootstrap template
 
 The Bootstrap template is a classical 1-2-3 column layout with a header and a footer.
 It adapts automatically, so if you put nothing in the left column, it will disappear.
-Using the template instance, you can customize the with of the column, etc...
+Using the template instance, you can customize the width of the columns, etc...
 
 
 Bootstrap menu rendererer
 -------------------------
 
 So basically, if you are declaring your menus in Mouf, and if you use Bootstrap, this help you render the menus.
-The renderer is making extensive use of objects declared in the (mouf\html.widgets.menu)[https://github.com/thecodingmachine/html.widgets.menu] package).
+The renderer is making extensive use of objects declared in the [mouf\html.widgets.menu](https://github.com/thecodingmachine/html.widgets.menu) package.
 
 Mouf package
 ------------
