@@ -10,6 +10,30 @@ The Bootstrap template is a classical 1-2-3 column layout with a header and a fo
 It adapts automatically, so if you put nothing in the left column, it will disappear.
 Using the template instance, you can customize the width of the columns, etc...
 
+Template vs Bootstrap version
+-----------------------------
+
+Below is a simple table matching template versions and Bootstrap versions:
+
+Bootstrap version | Template version
+2.1               | 2.1.*
+2.3               | 2.3.*
+3.0               | 3.0
+3.1               | 3.1
+3.2               | 3.2
+3.3               | 3.3
+3.*               | 4.0
+
+The latest version is using Bower dependencies.
+You can restrict the version of Boostrap you use in your composer.json using:
+
+```json
+{
+	"require": {
+		"bower-asset/bootstrap": "3.3.*"
+	}
+}
+```
 
 Bootstrap menu rendererer
 -------------------------
