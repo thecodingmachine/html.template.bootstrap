@@ -10,6 +10,7 @@ namespace Mouf\Html\Template;
 use Mouf\Installer\PackageInstallerInterface;
 use Mouf\MoufManager;
 use Mouf\Html\Renderer\RendererUtils;
+use Mouf\Actions\InstallUtils;
 
 /**
  * An installer class for the Bootstrap template.
