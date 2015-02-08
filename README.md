@@ -16,6 +16,7 @@ Template vs Bootstrap version
 Below is a simple table matching template versions and Bootstrap versions:
 
 Bootstrap version | Template version
+------------------|------------------
 2.1               | 2.1.*
 2.3               | 2.3.*
 3.0               | 3.0
