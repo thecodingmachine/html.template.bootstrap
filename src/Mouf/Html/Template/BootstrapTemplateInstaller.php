@@ -7,6 +7,7 @@
 
 namespace Mouf\Html\Template;
 
+use Mouf\Html\Utils\WebLibraryManager\WebLibraryInstaller;
 use Mouf\Installer\PackageInstallerInterface;
 use Mouf\MoufManager;
 use Mouf\Html\Renderer\RendererUtils;
@@ -60,7 +61,7 @@ class BootstrapTemplateInstaller implements PackageInstallerInterface {
 		if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue() == null) {
 			$template->getProperty('webLibraryManager')->setValue($webLibraryManager);
 		}
-		
+
 		$bootstrapRenderer = InstallUtils::getOrCreateInstance("bootstrapRenderer", "Mouf\\Html\\Renderer\\FileBasedRenderer", $moufManager);
 		$bootstrapRenderer->getProperty("directory")->setValue("vendor/mouf/html.template.bootstrap/src/templates");
 		$bootstrapRenderer->getProperty("cacheService")->setValue($moufManager->getInstanceDescriptor("rendererCacheService"));
