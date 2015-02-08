@@ -7,6 +7,7 @@
 
 namespace Mouf\Html\Template;
 
+use Mouf\Html\Utils\WebLibraryManager\Components\ComponentsIntegrationService;
 use Mouf\Html\Utils\WebLibraryManager\WebLibraryInstaller;
 use Mouf\Installer\PackageInstallerInterface;
 use Mouf\MoufManager;
@@ -69,7 +70,14 @@ class BootstrapTemplateInstaller implements PackageInstallerInterface {
 		$bootstrapRenderer->getProperty("priority")->setValue(0);
 		$template->getProperty("templateRenderer")->setValue($bootstrapRenderer);
 		$template->getProperty("defaultRenderer")->setValue($moufManager->getInstanceDescriptor("defaultRenderer"));
-				
+
+		// Let's first ensure all components are created
+		ComponentsIntegrationService::fixAllInAppScope();
+
+		// Now, let's modify the component.bootstrap component because it does not feature the CSS files:
+		$bootstrapWebLibrary = $moufManager->getInstanceDescriptor("component.bootstrap");
+		$bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("components/bootstrap/css/bootstrap.min.css"));
+
 		// Let's rewrite the MoufComponents.php file to save the component
 		$moufManager->rewriteMouf();
 	}
