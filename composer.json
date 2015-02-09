@@ -22,8 +22,8 @@
 		"php" : ">=5.4.0",
 		"mouf/html.widgets.menu" : "~3.0",
 		"mouf/html.template.templateinterface" : "~2.1",
-		"bower-asset/jquery": "~1.9",
-		"bower-asset/bootstrap": "3.*"
+		"components/jquery": "~1.9",
+		"components/bootstrap": "3.*"
 	},
 	"autoload" : {
 		"psr-0" : {
