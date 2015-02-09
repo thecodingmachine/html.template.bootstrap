@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* @var $object Mouf\Html\Widgets\Form\CheckBoxField */
 $input = $object->getInput();
 $label = $object->getLabel();

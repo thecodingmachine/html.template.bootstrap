@@ -1,84 +1,84 @@
 <?php
 /*
  * Copyright (c) 2013-2014 David Negrier
- * 
+ *
  * See the file LICENSE.txt for copying permission.
  */
 
 namespace Mouf\Html\Template;
 
 use Mouf\Html\Utils\WebLibraryManager\Components\ComponentsIntegrationService;
-use Mouf\Html\Utils\WebLibraryManager\WebLibraryInstaller;
 use Mouf\Installer\PackageInstallerInterface;
 use Mouf\MoufManager;
-use Mouf\Html\Renderer\RendererUtils;
 use Mouf\Actions\InstallUtils;
 use Mouf\Html\Renderer\ChainableRendererInterface;
 
 /**
  * An installer class for the Bootstrap template.
  */
-class BootstrapTemplateInstaller implements PackageInstallerInterface {
+class BootstrapTemplateInstaller implements PackageInstallerInterface
+{
 
-	/**
-	 * (non-PHPdoc)
-	 * @see \Mouf\Installer\PackageInstallerInterface::install()
-	 */
-	public static function install(MoufManager $moufManager) {
-		$contentBlock = InstallUtils::getOrCreateInstance("block.content", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-		$leftBlock = InstallUtils::getOrCreateInstance("block.left", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-		$rightBlock = InstallUtils::getOrCreateInstance("block.right", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-		$headerBlock = InstallUtils::getOrCreateInstance("block.header", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-		$footerBlock = InstallUtils::getOrCreateInstance("block.footer", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
-		
-		$template = InstallUtils::getOrCreateInstance("bootstrapTemplate", "Mouf\\Html\\Template\\BootstrapTemplate", $moufManager);
-		
-		$contentProperty = $template->getProperty("content");
-		if ($contentProperty->getValue() == null) {
-			$contentProperty->setValue($contentBlock);
-		}
-		
-		$leftProperty = $template->getProperty("left");
-		if ($leftProperty->getValue() == null) {
-			$leftProperty->setValue($leftBlock);
-		}
-		
-		$rightProperty = $template->getProperty("right");
-		if ($rightProperty->getValue() == null) {
-			$rightProperty->setValue($rightBlock);
-		}
-		
-		$headerProperty = $template->getProperty("header");
-		if ($headerProperty->getValue() == null) {
-			$headerProperty->setValue($headerBlock);
-		}
-		
-		$footerProperty = $template->getProperty("footer");
-		if ($footerProperty->getValue() == null) {
-			$footerProperty->setValue($footerBlock);
-		}
-		
-		$webLibraryManager = $moufManager->getInstanceDescriptor('defaultWebLibraryManager');
-		if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue() == null) {
-			$template->getProperty('webLibraryManager')->setValue($webLibraryManager);
-		}
+    /**
+     * (non-PHPdoc)
+     * @see \Mouf\Installer\PackageInstallerInterface::install()
+     */
+    public static function install(MoufManager $moufManager)
+    {
+        $contentBlock = InstallUtils::getOrCreateInstance("block.content", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+        $leftBlock = InstallUtils::getOrCreateInstance("block.left", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+        $rightBlock = InstallUtils::getOrCreateInstance("block.right", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+        $headerBlock = InstallUtils::getOrCreateInstance("block.header", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
+        $footerBlock = InstallUtils::getOrCreateInstance("block.footer", "Mouf\\Html\\HtmlElement\\HtmlBlock", $moufManager);
 
-		$bootstrapRenderer = InstallUtils::getOrCreateInstance("bootstrapRenderer", "Mouf\\Html\\Renderer\\FileBasedRenderer", $moufManager);
-		$bootstrapRenderer->getProperty("directory")->setValue("vendor/mouf/html.template.bootstrap/src/templates");
-		$bootstrapRenderer->getProperty("cacheService")->setValue($moufManager->getInstanceDescriptor("rendererCacheService"));
-		$bootstrapRenderer->getProperty("type")->setValue(ChainableRendererInterface::TYPE_TEMPLATE);
-		$bootstrapRenderer->getProperty("priority")->setValue(0);
-		$template->getProperty("templateRenderer")->setValue($bootstrapRenderer);
-		$template->getProperty("defaultRenderer")->setValue($moufManager->getInstanceDescriptor("defaultRenderer"));
+        $template = InstallUtils::getOrCreateInstance("bootstrapTemplate", "Mouf\\Html\\Template\\BootstrapTemplate", $moufManager);
 
-		// Let's first ensure all components are created
-		ComponentsIntegrationService::fixAllInAppScope();
+        $contentProperty = $template->getProperty("content");
+        if ($contentProperty->getValue() == null) {
+            $contentProperty->setValue($contentBlock);
+        }
 
-		// Now, let's modify the component.bootstrap component because it does not feature the CSS files:
-		$bootstrapWebLibrary = $moufManager->getInstanceDescriptor("component.bootstrap");
-		$bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("components/bootstrap/css/bootstrap.min.css"));
+        $leftProperty = $template->getProperty("left");
+        if ($leftProperty->getValue() == null) {
+            $leftProperty->setValue($leftBlock);
+        }
 
-		// Let's rewrite the MoufComponents.php file to save the component
-		$moufManager->rewriteMouf();
-	}
+        $rightProperty = $template->getProperty("right");
+        if ($rightProperty->getValue() == null) {
+            $rightProperty->setValue($rightBlock);
+        }
+
+        $headerProperty = $template->getProperty("header");
+        if ($headerProperty->getValue() == null) {
+            $headerProperty->setValue($headerBlock);
+        }
+
+        $footerProperty = $template->getProperty("footer");
+        if ($footerProperty->getValue() == null) {
+            $footerProperty->setValue($footerBlock);
+        }
+
+        $webLibraryManager = $moufManager->getInstanceDescriptor('defaultWebLibraryManager');
+        if ($webLibraryManager && $template->getProperty('webLibraryManager')->getValue() == null) {
+            $template->getProperty('webLibraryManager')->setValue($webLibraryManager);
+        }
+
+        $bootstrapRenderer = InstallUtils::getOrCreateInstance("bootstrapRenderer", "Mouf\\Html\\Renderer\\FileBasedRenderer", $moufManager);
+        $bootstrapRenderer->getProperty("directory")->setValue("vendor/mouf/html.template.bootstrap/src/templates");
+        $bootstrapRenderer->getProperty("cacheService")->setValue($moufManager->getInstanceDescriptor("rendererCacheService"));
+        $bootstrapRenderer->getProperty("type")->setValue(ChainableRendererInterface::TYPE_TEMPLATE);
+        $bootstrapRenderer->getProperty("priority")->setValue(0);
+        $template->getProperty("templateRenderer")->setValue($bootstrapRenderer);
+        $template->getProperty("defaultRenderer")->setValue($moufManager->getInstanceDescriptor("defaultRenderer"));
+
+        // Let's first ensure all components are created
+        ComponentsIntegrationService::fixAllInAppScope();
+
+        // Now, let's modify the component.bootstrap component because it does not feature the CSS files:
+        $bootstrapWebLibrary = $moufManager->getInstanceDescriptor("component.bootstrap");
+        $bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("components/bootstrap/css/bootstrap.min.css"));
+
+        // Let's rewrite the MoufComponents.php file to save the component
+        $moufManager->rewriteMouf();
+    }
 }
