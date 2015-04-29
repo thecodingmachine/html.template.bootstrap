@@ -24,17 +24,7 @@ Bootstrap version | Template version
 3.2               | 3.2
 3.3               | 3.3
 3.*               | 4.0
-
-The latest version is using Bower dependencies.
-You can restrict the version of Boostrap you use in your composer.json using:
-
-```json
-{
-	"require": {
-		"bower-asset/bootstrap": "3.3.*"
-	}
-}
-```
+3.*               | 4.1
 
 Bootstrap menu rendererer
 -------------------------
