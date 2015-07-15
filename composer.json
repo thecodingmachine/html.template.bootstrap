@@ -18,6 +18,7 @@
 	"license" : "MIT",
 	"require" : {
 		"mouf/html.utils.weblibrarymanager" : "~3.0",
+	    "mouf/html.utils.weblibrarymanager.component-installer" : "~2.2",
 		"mouf/html.widgets.messageservice" : "~3.0",
 		"php" : ">=5.4.0",
 		"mouf/html.widgets.menu" : "~3.0",

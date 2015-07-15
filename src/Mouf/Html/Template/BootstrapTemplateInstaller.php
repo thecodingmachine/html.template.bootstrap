@@ -76,7 +76,7 @@ class BootstrapTemplateInstaller implements PackageInstallerInterface
 
         // Now, let's modify the component.bootstrap component because it does not feature the CSS files:
         $bootstrapWebLibrary = $moufManager->getInstanceDescriptor("component.bootstrap");
-        $bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("components/bootstrap/css/bootstrap.min.css"));
+        $bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("vendor/components/bootstrap/css/bootstrap.min.css"));
 
         // Let's rewrite the MoufComponents.php file to save the component
         $moufManager->rewriteMouf();
