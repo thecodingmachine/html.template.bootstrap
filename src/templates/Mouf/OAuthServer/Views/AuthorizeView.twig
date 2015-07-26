@@ -4,7 +4,7 @@
       }
 
       .form-signin {
-        max-width: 300px;
+        max-width: 600px;
         padding: 19px 29px 29px;
         margin: 60px auto 20px;
         background-color: #fff;
@@ -29,11 +29,18 @@
       }
 
 </style>
-
-<form class="form-signin" action='login'  method='post'>
-	<input type='hidden' name='redirect' value='{{ this.redirecturl }}' />
-	<h2 class="form-signin-heading">Please sign in</h2>
-	<input name="login" type="text" class="input-block-level form-control" placeholder="{{ this.loginLabel }}" value="{{ this.login }}">
-	<input name="password" type="password" class="input-block-level form-control" placeholder="{{ this.passwordLabel }}">
-	<button class="btn btn-large btn-primary" type="submit">{{ this.loginSubmitLabel }}</button>
-</form>
+<div class="smallcenterbox lightbox login_controller">
+	<form method="post" class="form-signin">
+		<h1>{{ this.clientName }} would like to access:</h1>
+		<ul>
+			{% for scope in scopes %}
+		        <li>
+		        	{{ scope.getId() }}: {{ scope.getDescription() }}
+		        </li>
+		    {% endfor %}
+		</ul>
+	
+	    <input type="submit" class="btn btn-large btn-success" value="Approve" name="authorization">
+	    <input type="submit" class="btn btn-large btn-danger" value="Deny" name="authorization">
+	</form>
+</div>
