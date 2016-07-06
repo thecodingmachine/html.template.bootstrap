@@ -34,7 +34,13 @@
 <form class="form-signin" action='{{ this.loginActionUrl ? this.loginActionUrl : "login" }}'  method='post'>
 	<input type='hidden' name='redirect' value='{{ this.redirecturl }}' />
 	<h2 class="form-signin-heading">Please sign in</h2>
+
+    {% if displayBadCredentialsMessage  %}
+    <div class="alert alert-danger">{{ badCredentialsMessage }}</div>
+    {% endif %}
+    <div {% if displayBadCredentialsMessage %}class="has-error"{% endif %}>
 	<input name="login" type="text" class="input-block-level form-control" placeholder="{{ this.loginLabel }}" value="{{ this.login }}">
 	<input name="password" type="password" class="input-block-level form-control" placeholder="{{ this.passwordLabel }}">
-	<button class="btn btn-large btn-primary" type="submit">{{ this.loginSubmitLabel }}</button>
+    </div>
+	<button class="btn btn-large btn-primary btn-block" type="submit">{{ this.loginSubmitLabel }}</button>
 </form>
