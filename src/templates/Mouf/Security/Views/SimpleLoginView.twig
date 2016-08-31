@@ -33,7 +33,7 @@
 {# Note: the {{ this.loginActionUrl ? this.loginActionUrl : "login" }} part is to allow working with old and new versions of the SimpleLoginView #}
 <form class="form-signin" action='{{ this.loginActionUrl ? this.loginActionUrl : "login" }}'  method='post'>
     <input type='hidden' name='redirect' value='{{ this.redirecturl }}' />
-    <h2 class="form-signin-heading">Please sign in</h2>
+    <h2 class="form-signin-heading">{{ this.titleLabel }}</h2>
 
     {% if displayBadCredentialsMessage  %}
         <div class="alert alert-danger">{{ badCredentialsMessage }}</div>
