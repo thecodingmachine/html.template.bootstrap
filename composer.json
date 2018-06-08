@@ -24,7 +24,7 @@
 		"mouf/html.widgets.menu" : "~3.0",
 		"mouf/html.template.templateinterface" : "~2.1",
 		"components/jquery": "~1.9",
-		"components/bootstrap": "3.*"
+		"components/bootstrap": "4.*"
 	},
 	"autoload" : {
 		"psr-0" : {
