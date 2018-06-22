@@ -71,12 +71,23 @@ class BootstrapTemplateInstaller implements PackageInstallerInterface
         $template->getProperty("templateRenderer")->setValue($bootstrapRenderer);
         $template->getProperty("defaultRenderer")->setValue($moufManager->getInstanceDescriptor("defaultRenderer"));
 
-        // Let's first ensure all components are created
-        ComponentsIntegrationService::fixAllInAppScope();
 
         // Now, let's modify the component.bootstrap component because it does not feature the CSS files:
-        $bootstrapWebLibrary = $moufManager->getInstanceDescriptor("component.bootstrap");
+        $jqueryWebLibrary = InstallUtils::getOrCreateInstance("component.jquery", "Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary", $moufManager);
+        $jqueryWebLibrary->getProperty("jsFiles")->setValue(array("https://code.jquery.com/jquery-3.3.1.slim.min.js"));
+
+        $popperWebLibrary = InstallUtils::getOrCreateInstance("component.popper", "Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary", $moufManager);
+        $popperWebLibrary->getProperty("jsFiles")->setValue(array("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"));
+
+        $bootstrapWebLibrary = InstallUtils::getOrCreateInstance("component.bootstrap", "Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary", $moufManager);
         $bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("vendor/components/bootstrap/css/bootstrap.min.css"));
+        $bootstrapWebLibrary->getProperty("jsFiles")->setValue(array("https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"));
+
+        $webLibraryManagers = $webLibraryManager->getProperty('webLibraries')->getValue();
+        $webLibraryManagers[] = $jqueryWebLibrary;
+        $webLibraryManagers[] = $popperWebLibrary;
+        $webLibraryManagers[] = $bootstrapWebLibrary;
+        $webLibraryManager->getProperty('webLibraries')->setValue($webLibraryManagers);
 
         // Let's rewrite the MoufComponents.php file to save the component
         $moufManager->rewriteMouf();
