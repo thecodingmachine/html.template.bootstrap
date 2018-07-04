@@ -44,7 +44,7 @@
 		<div class="{{ containerClass }}">
 			<div class="row">
 				{% if leftHtml %}
-					<div id="sidebar-left" class="sidebar col-md-{{ this.leftColumnSize }}">
+					<div id="sidebar-left" class="sidebar col-{{ this.leftColumnSize }}">
 						{% if this.wrapLeftSideBarInWell %}
 							<div class="well">
 						{% endif %}
@@ -54,11 +54,11 @@
 						{% endif %}
 					</div>
 				{% endif %}
-				<div id="content" class="col-md-{{ contentSize }}">
+				<div id="content" class="col-{{ contentSize }}">
 					{{ toHtml(this.content) }}
 				</div>
 				{% if rightHtml %}
-					<div id="sidebar-right" class="sidebar col-md-{{ this.rightColumnSize }}">
+					<div id="sidebar-right" class="sidebar col-{{ this.rightColumnSize }}">
 						{% if this.wrapRightSideBarInWell %}
 							<div class="well">
 						{% endif %}

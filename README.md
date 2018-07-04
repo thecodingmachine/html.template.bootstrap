@@ -25,6 +25,7 @@ Bootstrap version | Template version
 3.3               | 3.3
 3.*               | 4.0
 3.*               | 4.1
+4.*               | 5.0
 
 Bootstrap menu rendererer
 -------------------------
