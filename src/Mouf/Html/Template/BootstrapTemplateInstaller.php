@@ -80,7 +80,7 @@ class BootstrapTemplateInstaller implements PackageInstallerInterface
         $popperWebLibrary->getProperty("jsFiles")->setValue(array("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"));
 
         $bootstrapWebLibrary = InstallUtils::getOrCreateInstance("component.bootstrap", "Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary", $moufManager);
-        $bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("vendor/components/bootstrap/css/bootstrap.min.css"));
+        $bootstrapWebLibrary->getProperty("cssFiles")->setValue(array("https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"));
         $bootstrapWebLibrary->getProperty("jsFiles")->setValue(array("https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"));
 
         $webLibraryManagers = $webLibraryManager->getProperty('webLibraries')->getValue();
