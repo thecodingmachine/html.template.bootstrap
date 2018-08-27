@@ -115,20 +115,11 @@ class BootstrapTemplate extends BaseTemplate  {
 	public $enableFluidLayout = false;
 	
 	/**
-	 * Default constructor
-	 */
-	public function __construct() {
-		parent::__construct();
-		//$this->favIconUrl = self::TEMPLATE_ROOT_URL."images/favicon.png";
-		//$this->logoUrl = self::TEMPLATE_ROOT_URL."images/logo.png";
-	}
-
-	/**
 	 * Draws the template.
 	 */
 	public function toHtml(){
 		// Let's register the template renderer in the default renderer.
-		$this->getDefaultRenderer()->setTemplateRenderer($this->getTemplateRenderer());
+		$this->getDefaultRenderer()->setTemplateRendererInstanceName($this->getTemplateRendererInstanceName());
 		
 		header('Content-Type: text/html; charset=utf-8');
 		include __DIR__."/../../../../views/template.php";
@@ -140,7 +131,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * @Property
 	 * @param HtmlElementInterface $left
 	 */
-	public function setLeft(HtmlElementInterface $left) {
+	public function setLeft(HtmlElementInterface $left): void {
 		$this->left = $left;
 	}
 	
@@ -150,7 +141,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * @Property
 	 * @param HtmlElementInterface $right
 	 */
-	public function setRight(HtmlElementInterface $right) {
+	public function setRight(HtmlElementInterface $right): void {
 		$this->right = $right;
 	}
 	
@@ -160,7 +151,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * @Property
 	 * @param HtmlElementInterface $header
 	 */
-	public function setHeader(HtmlElementInterface $header) {
+	public function setHeader(HtmlElementInterface $header): void {
 		$this->header = $header;
 	}
 	
@@ -170,7 +161,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * @Property
 	 * @param HtmlElementInterface $footer
 	 */
-	public function setFooter(HtmlElementInterface $footer) {
+	public function setFooter(HtmlElementInterface $footer): void {
 		$this->footer = $footer;
 	}
 
@@ -182,7 +173,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * @Property
 	 * @param int $leftColumnSize
 	 */
-	public function setLeftColumnSize($leftColumnSize) {
+	public function setLeftColumnSize(int $leftColumnSize): void {
 		$this->leftColumnSize = $leftColumnSize;
 	}
 	
@@ -194,7 +185,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * @Property
 	 * @param int $rightColumnSize
 	 */
-	public function setRightColumnSize($rightColumnSize) {
+	public function setRightColumnSize(int $rightColumnSize): void {
 		$this->rightColumnSize = $rightColumnSize;
 	}
 	
@@ -203,7 +194,7 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * 
 	 * @param bool $wrapLeftSideBarInWell
 	 */
-	public function setWrapLeftSideBarInWell($wrapLeftSideBarInWell) {
+	public function setWrapLeftSideBarInWell(bool $wrapLeftSideBarInWell): void {
 		$this->wrapLeftSideBarInWell = $wrapLeftSideBarInWell;
 	}
 
@@ -212,9 +203,8 @@ class BootstrapTemplate extends BaseTemplate  {
 	 * 
 	 * @param bool $wrapRightSideBarInWell
 	 */
-	public function setWrapRightSideBarInWell($wrapRightSideBarInWell) {
+	public function setWrapRightSideBarInWell(bool $wrapRightSideBarInWell): void {
 		$this->wrapRightSideBarInWell = $wrapRightSideBarInWell;
 	}
 	
 }
-?>

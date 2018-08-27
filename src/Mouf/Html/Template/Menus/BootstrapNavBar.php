@@ -57,15 +57,20 @@ class BootstrapNavBar implements HtmlElementInterface {
 	 * @var boolean
 	 */
 	public $fixed;
-	
-	/**
+    /**
+     * @var string
+     */
+    private $rootUrl;
+
+    /**
 	 * Initialize the object, optionnally with the array of menu items to be displayed.
 	 *
 	 * @param array<HtmlElementInterface> $children
 	 */
-	public function __construct($children = array()) {
+	public function __construct(array $children = array(), string $rootUrl = '/') {
 		$this->children = $children;
-	}
+        $this->rootUrl = $rootUrl;
+    }
 	
 	public function toHtml() {
 		echo '<div class="navbar'.($this->inverted?' navbar-inverse':'').($this->fixed?' navbar-fixed-top':'').'">';
@@ -73,7 +78,7 @@ class BootstrapNavBar implements HtmlElementInterface {
 		echo '<div class="container">';
 		
 		if ($this->title) {
-			echo '<a class="brand" href="'.ROOT_URL.$this->titleLink.'">'.$this->title.'</a>';
+			echo '<a class="brand" href="'.$this->rootUrl.$this->titleLink.'">'.$this->title.'</a>';
 		}
 		
 		foreach ($this->children as $child) {
@@ -85,4 +90,3 @@ class BootstrapNavBar implements HtmlElementInterface {
 		echo '</div>';
 	}
 }
-?>

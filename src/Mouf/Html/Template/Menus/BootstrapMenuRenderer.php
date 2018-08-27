@@ -9,6 +9,7 @@ namespace Mouf\Html\Template\Menus;
 use Mouf\Html\Widgets\Menu\MenuInterface;
 use \Mouf\Html\HtmlElement\HtmlElementInterface;
 use \Mouf\Html\Widgets\Menu\MenuItemInterface;
+use Mouf\Html\Widgets\Menu\MenuItemStyleIcon;
 
 /**
  * This class is in charge of rendering a menu. It contains a menu and can transform it in HTML using the toHtml() method.
@@ -23,7 +24,7 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	 *
 	 * @Property
 	 * @Compulsory
-	 * @var MenuInterface
+	 * @var MenuInterface|null
 	 */
 	public $menu;
 	
@@ -61,7 +62,7 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	 *
 	 * @param MenuInterface $menu
 	 */
-	public function __construct($menu = null) {
+	public function __construct(MenuInterface $menu = null) {
 		$this->menu = $menu;
 	}
 	
@@ -85,10 +86,17 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	}
 	
 	
-	private function renderHtmlMenuItem(MenuItemInterface $menuItem, $level = 0) {
+	private function renderHtmlMenuItem(MenuItemInterface $menuItem, int $level = 0): void {
 		if (!$menuItem->isHidden()) {
-			
-			$menuItemStyleIcon = $menuItem->getAdditionalStyleByType('Mouf\\Html\\Widgets\\Menu\\MenuItemStyleIcon');
+
+
+            $menuItemStyleIcon = null;
+            foreach ($menuItem->getAdditionalStyles() as $additionalStyle) {
+                if ($additionalStyle instanceof MenuItemStyleIcon) {
+                    $menuItemStyleIcon = $additionalStyle;
+                }
+            }
+
 			if($menuItemStyleIcon) {
 				$img = '<img src="'.$menuItemStyleIcon->getUrl().'" /> ';
 			} else {
@@ -153,4 +161,3 @@ class BootstrapMenuRenderer implements HtmlElementInterface {
 	}
 	
 }
-?>
