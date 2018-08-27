@@ -3,7 +3,6 @@
 
 namespace Mouf\Html\Template;
 
-
 use Mouf\Html\HtmlElement\HtmlBlock;
 use Mouf\Html\Renderer\CanSetTemplateRendererInterface;
 use Mouf\Html\Renderer\FileBasedRenderer;
