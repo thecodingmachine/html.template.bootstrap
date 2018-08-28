@@ -18,7 +18,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(aliases={"block.content"})
      */
-    public function createBlockContent(): HtmlBlock
+    public static function createBlockContent(): HtmlBlock
     {
         return new HtmlBlock();
     }
@@ -26,7 +26,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(name="block.left")
      */
-    public function createBlockLeft(): HtmlBlock
+    public static function createBlockLeft(): HtmlBlock
     {
         return new HtmlBlock();
     }
@@ -34,7 +34,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(name="block.right")
      */
-    public function createBlockRight(): HtmlBlock
+    public static function createBlockRight(): HtmlBlock
     {
         return new HtmlBlock();
     }
@@ -42,7 +42,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(name="block.header")
      */
-    public function createBlockHeader(): HtmlBlock
+    public static function createBlockHeader(): HtmlBlock
     {
         return new HtmlBlock();
     }
@@ -50,7 +50,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(name="block.footer")
      */
-    public function createBlockFooter(): HtmlBlock
+    public static function createBlockFooter(): HtmlBlock
     {
         return new HtmlBlock();
     }
@@ -58,7 +58,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(aliases={TemplateInterface::class})
      */
-    public function createBootstrapTemplate(CanSetTemplateRendererInterface $templateRenderer, ContainerInterface $container, WebLibraryManager $webLibraryManager): BootstrapTemplate
+    public static function createBootstrapTemplate(CanSetTemplateRendererInterface $templateRenderer, ContainerInterface $container, WebLibraryManager $webLibraryManager): BootstrapTemplate
     {
         $bootstrapTemplate = new BootstrapTemplate($templateRenderer, "bootstrapTemplateRenderer");
         $bootstrapTemplate->setContent($container->get('block.content'));
@@ -73,7 +73,7 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     /**
      * @Factory(name="bootstrapTemplateRenderer")
      */
-    public function createTemplateRenderer(CacheInterface $cache, ContainerInterface $container, \Twig_Environment $twig): FileBasedRenderer
+    public static function createTemplateRenderer(CacheInterface $cache, ContainerInterface $container, \Twig_Environment $twig): FileBasedRenderer
     {
         return new FileBasedRenderer(__DIR__.'/../../../templates/', $cache, $container, $twig);
     }
