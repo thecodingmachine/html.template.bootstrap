@@ -6,12 +6,14 @@ namespace Mouf\Html\Template;
 use Mouf\Html\HtmlElement\HtmlBlock;
 use Mouf\Html\Renderer\CanSetTemplateRendererInterface;
 use Mouf\Html\Renderer\FileBasedRenderer;
+use Mouf\Html\Utils\WebLibraryManager\WebLibrary;
 use Mouf\Html\Utils\WebLibraryManager\WebLibraryManager;
 use Psr\Container\ContainerInterface;
 use Psr\SimpleCache\CacheInterface;
 use TheCodingMachine\Funky\Annotations\Factory;
 use TheCodingMachine\Funky\ServiceProvider;
 use Mouf\Html\Template\TemplateInterface;
+use TheCodingMachine\Funky\Annotations\Tag;
 
 class BootstrapTemplateServiceProvider extends ServiceProvider
 {
@@ -76,5 +78,20 @@ class BootstrapTemplateServiceProvider extends ServiceProvider
     public static function createTemplateRenderer(CacheInterface $cache, ContainerInterface $container, \Twig_Environment $twig): FileBasedRenderer
     {
         return new FileBasedRenderer(__DIR__.'/../../../templates/', $cache, $container, $twig);
+    }
+
+    /**
+     * @Factory(name="javascript.bootstrap", tags={@Tag(name="webLibraries", priority=-10.0)})
+     */
+    public static function createBootstrapWebLibrary(): WebLibrary
+    {
+        return new WebLibrary(
+            array(
+                'vendor/mouf/html.utils.bootstrap/js/bootstrap.min.js'
+            ),
+            array(
+                'vendor/mouf/html.utils.bootstrap/css/bootstrap.min.css'
+            )
+        );
     }
 }
