@@ -46,11 +46,27 @@ class BootstrapNavBar implements HtmlElementInterface
     public $titleLink = "";
 
     /**
-     * If checked, the navbar will be rendered in dark shades instead of bright shades.
+     * If checked, the navbar will be rendered in dark shades instead of bright shades. This is a shorthand for setting either :
+     *  - navbar-dark bg-dark (TRUE)
+     *  - navbar-light bg-light (FALSE)
      *
      * @var boolean
      */
     public $inverted;
+
+    /**
+     * The mode of the Nav Bar : can be one of 'dark' or 'light'. This mainly will apply nav-bar-$mode class for inner items color.
+     * @Property
+     * @var string
+     */
+    private $mode;
+
+    /**
+     * The background of the Nav Bar : can be one of 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'white', 'transparent'.
+     * @Property
+     * @var string
+     */
+    private $background;
 
     /**
      * Display the menu with the maximum width<br />
@@ -80,4 +96,38 @@ class BootstrapNavBar implements HtmlElementInterface
     {
         $this->children = $children;
     }
+
+    /**
+     * @return string
+     */
+    public function getMode(): string
+    {
+        return $this->mode ?? ($this->inverted ? 'dark' : 'light');
+    }
+
+    /**
+     * @param string $mode
+     */
+    public function setMode(string $mode): void
+    {
+        $this->mode = $mode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBackground(): string
+    {
+        return $this->background ?? ($this->inverted ? 'dark' : 'light');
+    }
+
+    /**
+     * @param string $background
+     */
+    public function setBackground(string $background): void
+    {
+        $this->background = $background;
+    }
+
+
 }
