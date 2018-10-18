@@ -23,8 +23,6 @@ class BootstrapTemplate extends BaseTemplate
         Renderable::toHtml as toHtmlRenderer;
     }
 
-    const TEMPLATE_ROOT_URL = "vendor/mouf/html.template.bootstrap/";
-
     /**
      * The left menu of the template.
      *
@@ -118,22 +116,12 @@ class BootstrapTemplate extends BaseTemplate
     protected $containerClass = "container";
 
     /**
-     * Default constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        //$this->favIconUrl = self::TEMPLATE_ROOT_URL."images/favicon.png";
-        //$this->logoUrl = self::TEMPLATE_ROOT_URL."images/logo.png";
-    }
-
-    /**
      * Draws the template.
      */
     public function toHtml()
     {
         // Let's register the template renderer in the default renderer.
-        $this->getDefaultRenderer()->setTemplateRenderer($this->getTemplateRenderer());
+        $this->getDefaultRenderer()->setTemplateRendererInstanceName($this->getTemplateRendererInstanceName());
 
         header('Content-Type: text/html; charset=utf-8');
         //Renderable::toHtml();// __DIR__."/../../../../views/template.php";
@@ -146,7 +134,7 @@ class BootstrapTemplate extends BaseTemplate
      * @Property
      * @param HtmlElementInterface $left
      */
-    public function setLeft(HtmlElementInterface $left)
+    public function setLeft(HtmlElementInterface $left): void
     {
         $this->left = $left;
     }
@@ -157,7 +145,7 @@ class BootstrapTemplate extends BaseTemplate
      * @Property
      * @param HtmlElementInterface $right
      */
-    public function setRight(HtmlElementInterface $right)
+    public function setRight(HtmlElementInterface $right): void
     {
         $this->right = $right;
     }
@@ -168,7 +156,7 @@ class BootstrapTemplate extends BaseTemplate
      * @Property
      * @param HtmlElementInterface $header
      */
-    public function setHeader(HtmlElementInterface $header)
+    public function setHeader(HtmlElementInterface $header): void
     {
         $this->header = $header;
     }
@@ -179,7 +167,7 @@ class BootstrapTemplate extends BaseTemplate
      * @Property
      * @param HtmlElementInterface $footer
      */
-    public function setFooter(HtmlElementInterface $footer)
+    public function setFooter(HtmlElementInterface $footer): void
     {
         $this->footer = $footer;
     }
@@ -187,7 +175,7 @@ class BootstrapTemplate extends BaseTemplate
     /**
      * The content of the template.
      */
-    public function getContent()
+    public function getContent(): ?HtmlElementInterface
     {
         return $this->content;
     }
@@ -195,7 +183,7 @@ class BootstrapTemplate extends BaseTemplate
     /**
      * The left menu of the template.
      */
-    public function getLeft()
+    public function getLeft(): ?HtmlElementInterface
     {
         return $this->left;
     }
@@ -203,7 +191,7 @@ class BootstrapTemplate extends BaseTemplate
     /**
      * The right menu of the template.
      */
-    public function getRight()
+    public function getRight(): ?HtmlElementInterface
     {
         return $this->right;
     }
@@ -211,7 +199,7 @@ class BootstrapTemplate extends BaseTemplate
     /**
      * The header of the template.
      */
-    public function getHeader()
+    public function getHeader(): ?HtmlElementInterface
     {
         return $this->header;
     }
@@ -219,7 +207,7 @@ class BootstrapTemplate extends BaseTemplate
     /**
      * The footer of the template.
      */
-    public function getFooter()
+    public function getFooter(): ?HtmlElementInterface
     {
         return $this->footer;
     }
@@ -232,7 +220,7 @@ class BootstrapTemplate extends BaseTemplate
      * @Property
      * @param int $leftColumnSize
      */
-    public function setLeftColumnSize($leftColumnSize)
+    public function setLeftColumnSize(int $leftColumnSize): void
     {
         $this->leftColumnSize = $leftColumnSize;
     }
@@ -245,7 +233,7 @@ class BootstrapTemplate extends BaseTemplate
      * @Property
      * @param int $rightColumnSize
      */
-    public function setRightColumnSize($rightColumnSize)
+    public function setRightColumnSize(int $rightColumnSize): void
     {
         $this->rightColumnSize = $rightColumnSize;
     }
@@ -256,7 +244,7 @@ class BootstrapTemplate extends BaseTemplate
      * If you are not using the left column, the size of the column is 0.
      *
      */
-    public function getLeftColumnSize()
+    public function getLeftColumnSize(): int
     {
         return $this->leftColumnSize;
     }
@@ -267,7 +255,7 @@ class BootstrapTemplate extends BaseTemplate
      * If you are not using the right column, the size of the column is 0.
      *
      */
-    public function getRightColumnSize()
+    public function getRightColumnSize(): int
     {
         return $this->rightColumnSize;
     }
@@ -277,7 +265,7 @@ class BootstrapTemplate extends BaseTemplate
      *
      * @param bool $wrapLeftSideBarInWell
      */
-    public function setWrapLeftSideBarInWell($wrapLeftSideBarInWell)
+    public function setWrapLeftSideBarInWell(bool $wrapLeftSideBarInWell): void
     {
         $this->wrapLeftSideBarInWell = $wrapLeftSideBarInWell;
     }
@@ -287,7 +275,7 @@ class BootstrapTemplate extends BaseTemplate
      *
      * @param bool $wrapRightSideBarInWell
      */
-    public function setWrapRightSideBarInWell($wrapRightSideBarInWell)
+    public function setWrapRightSideBarInWell(bool $wrapRightSideBarInWell): void
     {
         $this->wrapRightSideBarInWell = $wrapRightSideBarInWell;
     }
@@ -296,7 +284,7 @@ class BootstrapTemplate extends BaseTemplate
      * Whether we should or not put the left sidebar in a Bootstrap "well" element.
      *
      */
-    public function getWrapLeftSideBarInWell()
+    public function getWrapLeftSideBarInWell(): bool
     {
         return $this->wrapLeftSideBarInWell;
     }
@@ -304,7 +292,7 @@ class BootstrapTemplate extends BaseTemplate
     /**
      * Whether we should or not put the left sidebar in a Bootstrap "well" element.
      */
-    public function getWrapRightSideBarInWell()
+    public function getWrapRightSideBarInWell(): bool
     {
         return $this->wrapRightSideBarInWell;
     }
@@ -313,7 +301,7 @@ class BootstrapTemplate extends BaseTemplate
      * The css class applied to the container div.
      * @param string $containerClass
      */
-    public function setContainerClass($containerClass)
+    public function setContainerClass(string $containerClass): void
     {
         $this->containerClass = $containerClass;
     }
