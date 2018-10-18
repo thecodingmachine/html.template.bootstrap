@@ -26,6 +26,7 @@ Bootstrap version | Template version
 3.*               | 4.0
 3.*               | 4.1
 4.*               | 5.0
+4.*               | 5.1 (uses Service providers instead of Mouf installer)
 
 Bootstrap menu rendererer
 -------------------------
