@@ -20,8 +20,7 @@
 		"mouf/html.widgets.messageservice" : "~4.0",
 		"php" : ">=7.1",
 		"mouf/html.widgets.menu" : "^4",
-		"mouf/html.template.templateinterface" : "^3",
-		"mouf/html.utils.bootstrap" : "2.3.*"
+		"mouf/html.template.templateinterface" : "^3"
 	},
 	"require-dev": {
 		"phpstan/phpstan": "^0.10.3",
