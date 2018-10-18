@@ -1,6 +1,7 @@
 <?php
 use Mouf\Html\Widgets\Form\Styles\LayoutStyle;
 use Mouf\Html\Widgets\Form\CheckboxesField;
+
 /* @var $object /* @var $object CheckboxesField */
 
 //Check for styles
@@ -12,7 +13,7 @@ if ($inline) {
 }
 ?>
 <div class="form-group <?php echo $object->getName()?>">
-	<?php
+    <?php
     if ($inline) {
         $object->getLabel()->addClass("col-lg-".$labelRatio);
     }
@@ -23,16 +24,15 @@ if ($inline) {
     $object->getLabel()->toHtml();
     ?>
     <div class="<?php echo $inline ? "col-lg-".$fieldRatio : ""; ?>">
-    	<?php
+        <?php
         foreach ($object->getCheckboxes() as $checkbox) {
             $checkbox->toHtml();
         }
         if ($object->getHelpText()) {
             ?>
-			<span class="help-block"><?php $object->getHelpText()->toHtml() ?></span>
-			<?php
-
+            <span class="help-block"><?php $object->getHelpText()->toHtml() ?></span>
+            <?php
         }
         ?>
-	</div>
+    </div>
 </div>

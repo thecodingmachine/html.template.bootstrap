@@ -59,67 +59,67 @@ class BootstrapMenu extends Menu
      */
     public $stacked;
 
-// 	private function renderHtmlMenuItem(MenuItemInterface $menuItem, $level = 0) {
-// 		if (!$menuItem->isHidden()) {
+//  private function renderHtmlMenuItem(MenuItemInterface $menuItem, $level = 0) {
+//      if (!$menuItem->isHidden()) {
 
-// 			$menuItemStyleIcon = $menuItem->getAdditionalStyleByType('Mouf\\Html\\Widgets\\Menu\\MenuItemStyleIcon');
-// 			if($menuItemStyleIcon) {
-// 				$img = '<img src="'.$menuItemStyleIcon->getUrl().'" /> ';
-// 			} else {
-// 				$img = '';
-// 			}
-
-
-// 			$children = $menuItem->getChildren();
-// 			echo '<li class="';
-// 			$menuCssClass = $menuItem->getCssClass();
-// 			echo $menuCssClass;
-// 			if ($menuItem->isActive()) {
-// 				echo ' active';
-// 			}
-
-// 			if ($children) {
-// 				if ($level == 0) {
-// 					echo ' dropdown';
-// 				} else {
-// 					echo ' dropdown-submenu';
-// 				}
-// 			}
-// 			echo '">';
+//          $menuItemStyleIcon = $menuItem->getAdditionalStyleByType('Mouf\\Html\\Widgets\\Menu\\MenuItemStyleIcon');
+//          if($menuItemStyleIcon) {
+//              $img = '<img src="'.$menuItemStyleIcon->getUrl().'" /> ';
+//          } else {
+//              $img = '';
+//          }
 
 
-// 			// Note: restriction from bootstrap: a menu cannot be clickable and have children at the same time
-// 			if ($children) {
-// 				if ($level == 0) {
-// 					echo '<a class="dropdown-toggle"
-// 					data-toggle="dropdown"
-// 					href="#">
-// 					'.$img.$menuItem->getLabel().'
-// 					<b class="caret"></b>
-// 					</a>';
-// 				} else {
-// 					echo '<a href="#">
-// 					'.$img.$menuItem->getLabel().'
-// 					</a>';
-// 				}
-// 				echo '<ul class="dropdown-menu">';
-// 				foreach ($children as $child) {
-// 					/* @var $child MenuItemInterface */
-// 					$this->renderHtmlMenuItem($child, $level+1);
-// 				}
-// 				echo '</ul>';
-// 			} else {
-// 				$url = $menuItem->getLink();
-// 				if ($url !== null) {
-// 					echo '<a href="'.htmlentities($url, ENT_QUOTES).'" >';
-// 				}
-// 				echo $img.$menuItem->getLabel();
-// 				if ($url !== null) {
-// 					echo '</a>';
-// 				}
-// 			}
+//          $children = $menuItem->getChildren();
+//          echo '<li class="';
+//          $menuCssClass = $menuItem->getCssClass();
+//          echo $menuCssClass;
+//          if ($menuItem->isActive()) {
+//              echo ' active';
+//          }
 
-// 			echo '</li>';
-// 		}
-// 	}
+//          if ($children) {
+//              if ($level == 0) {
+//                  echo ' dropdown';
+//              } else {
+//                  echo ' dropdown-submenu';
+//              }
+//          }
+//          echo '">';
+
+
+//          // Note: restriction from bootstrap: a menu cannot be clickable and have children at the same time
+//          if ($children) {
+//              if ($level == 0) {
+//                  echo '<a class="dropdown-toggle"
+//                  data-toggle="dropdown"
+//                  href="#">
+//                  '.$img.$menuItem->getLabel().'
+//                  <b class="caret"></b>
+//                  </a>';
+//              } else {
+//                  echo '<a href="#">
+//                  '.$img.$menuItem->getLabel().'
+//                  </a>';
+//              }
+//              echo '<ul class="dropdown-menu">';
+//              foreach ($children as $child) {
+//                  /* @var $child MenuItemInterface */
+//                  $this->renderHtmlMenuItem($child, $level+1);
+//              }
+//              echo '</ul>';
+//          } else {
+//              $url = $menuItem->getLink();
+//              if ($url !== null) {
+//                  echo '<a href="'.htmlentities($url, ENT_QUOTES).'" >';
+//              }
+//              echo $img.$menuItem->getLabel();
+//              if ($url !== null) {
+//                  echo '</a>';
+//              }
+//          }
+
+//          echo '</li>';
+//      }
+//  }
 }

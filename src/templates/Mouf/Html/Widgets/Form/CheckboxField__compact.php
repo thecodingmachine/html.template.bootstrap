@@ -1,5 +1,5 @@
 <div class="checkbox">
-	<?php
+    <?php
     /* @var $object Mouf\Html\Widgets\Form\RadioField */
     $object->getLabel()->toHtml();
     $object->getInput()->toHtml();

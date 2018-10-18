@@ -92,7 +92,7 @@ class BootstrapNavBar implements HtmlElementInterface
      * @Important
      * @param array<HtmlElementInterface> $children
      */
-    public function __construct($children = array())
+    public function __construct(array $children = [])
     {
         $this->children = $children;
     }
@@ -128,6 +128,4 @@ class BootstrapNavBar implements HtmlElementInterface
     {
         $this->background = $background;
     }
-
-
 }
