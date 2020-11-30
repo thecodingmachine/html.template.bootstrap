@@ -123,7 +123,7 @@ class BootstrapTemplate extends BaseTemplate
         // Let's register the template renderer in the default renderer.
         $this->getDefaultRenderer()->setTemplateRendererInstanceName($this->getTemplateRendererInstanceName());
 
-        if (PHP_SAPI !== 'cli') {
+        if (PHP_SAPI !== 'cli' && !headers_sent()) {
             header('Content-Type: text/html; charset=utf-8');
         }
         //Renderable::toHtml();// __DIR__."/../../../../views/template.php";
