@@ -3,8 +3,12 @@
 $input = $object->getInput();
 $label = $object->getLabel();
 $text = $label->getChildren();
-$text = $text[0];
+if (count($text) > 0) {
+    $text = $text[0];
+}
 $label->setChildren([$input]);
-$label->addChild($text);
+if ($text !== null) {
+    $label->addChild($text);
+}
 $label->addClass("checkbox-inline");
 $label->toHtml();
